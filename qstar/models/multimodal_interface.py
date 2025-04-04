@@ -5,6 +5,22 @@ from PIL import Image
 import torch
 import torchaudio
 import os
+import time
+from tqdm import tqdm
+
+
+def verify_caption(caption):
+    return "photo" in caption.lower() or "image" in caption.lower()
+
+def recalibrate_caption(caption):
+    return caption if verify_caption(caption) else caption + ". Vérifie la scène."
+
+def verify_transcript(transcript):
+    return len(transcript.split()) > 3
+
+def recalibrate_transcript(transcript):
+    return transcript if verify_transcript(transcript) else transcript + ". Analyse complémentaire demandée."
+
 
 class QStarVision:
     def __init__(self, model_name="Salesforce/blip-image-captioning-base"):
@@ -20,8 +36,7 @@ class QStarVision:
     def qstar_image_pipeline(self, image_path):
         caption = self.describe_image(image_path)
         print(f"[Image] Caption généré : {caption}")
-        verified = "photo" in caption.lower() or "image" in caption.lower()
-        recalibrated = caption if verified else caption + ". Vérifie la scène."
+        recalibrated = recalibrate_caption(caption)
         correlated = recalibrated + "\n[Annotation croisée effectuée]"
         final = correlated.strip().capitalize()
         print(f"[Image] Résultat final : {final}")
@@ -45,8 +60,7 @@ class QStarAudio:
     def qstar_audio_pipeline(self, audio_path):
         transcript = self.transcribe(audio_path)
         print(f"[Audio] Transcription brute : {transcript}")
-        verified = len(transcript.split()) > 3
-        recalibrated = transcript if verified else transcript + ". Analyse complémentaire demandée."
+        recalibrated = recalibrate_transcript(transcript)
         correlated = recalibrated + "\n[Alignement audio vérifié]"
         final = correlated.strip().capitalize()
         print(f"[Audio] Résultat final : {final}")
@@ -61,20 +75,35 @@ class QStarMultimodal:
 
     def analyze(self, prompt=None, image_path=None, audio_path=None):
         result = {}
+        total = sum([bool(prompt), bool(image_path), bool(audio_path)])
+        step = 100 // total if total > 0 else 0
+        progress = 0
+
+        print("\n[🔄 Lancement du pipeline multimodal Q-STAR]")
+        for _ in tqdm(range(3), desc="Initialisation", unit="task"):
+            time.sleep(0.2)
 
         if prompt:
-            print("[Texte] Traitement du prompt...")
+            print("\n[Texte] Traitement du prompt...")
             result["texte"] = self.text_model.generate(prompt)
+            progress += step
+            print(f"[Progression] {progress}%")
 
         if image_path and os.path.exists(image_path):
-            print("[Vision] Analyse de l'image...")
+            print("\n[Vision] Analyse de l'image...")
             result["image"] = self.vision_model.qstar_image_pipeline(image_path)
+            progress += step
+            print(f"[Progression] {progress}%")
 
         if audio_path and os.path.exists(audio_path):
-            print("[Audio] Analyse du fichier audio...")
+            print("\n[Audio] Analyse du fichier audio...")
             result["audio"] = self.speech_model.qstar_audio_pipeline(audio_path)
+            progress += step
+            print(f"[Progression] {progress}%")
 
+        print("\n✅ Pipeline multimodal terminé.")
         return result
+
 
 if __name__ == "__main__":
     mm = QStarMultimodal()

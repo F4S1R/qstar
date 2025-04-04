@@ -1,5 +1,9 @@
 # 🛠️ Makefile – Q-STAR Framework complet
 
+init-pyproject:
+	python scripts/init_pyproject.py
+
+
 PYTHON=python
 SCRIPT_DIR=scripts
 TEST_DIR=tests

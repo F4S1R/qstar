@@ -1,6 +1,6 @@
 # tests/test_pipeline.py
 import unittest
-from qstar.core import QStarPipeline
+from qstar.qstar_core import QStarPipeline
 
 class TestQStarPipeline(unittest.TestCase):
     def setUp(self):

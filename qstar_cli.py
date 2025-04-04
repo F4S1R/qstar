@@ -1,6 +1,6 @@
 # qstar_cli.py
 import argparse
-from qstar.core import QStarPipeline
+from qstar.qstar_core import QStarPipeline
 from qstar.models.llm_interface import QStarLLM
 from qstar.security.security_module import QStarSecurity
 from qstar.hardware.hardware_aware import QStarHardware
