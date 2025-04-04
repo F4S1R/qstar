@@ -4,29 +4,29 @@
 ![Build Status](https://github.com/guillaume-piron-dev/qstar/actions/workflows/test_full.yml/badge.svg)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)
+![PyPI version](https://img.shields.io/pypi/v/qstar?label=PyPI&color=brightgreen)
 ![Docker Pulls](https://img.shields.io/docker/pulls/guillaume-piron/qstar)
 ![Platform](https://img.shields.io/badge/platform-cross--platform-lightgrey.svg)
 ![Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen)
 [![HF Space](https://img.shields.io/badge/Live%20Demo-Hugging%20Face-orange)](https://huggingface.co/spaces/guillaume-piron/qstar)
 ![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)
 ![Lint: Flake8](https://img.shields.io/badge/lint-flake8-yellow)
-
-
+![PyPI - Downloads](https://img.shields.io/pypi/dm/qstar?label=PyPI%20Downloads&color=blue)
 
 # Q-STAR 🚀 – Framework IA Séquentielle Asynchrone Multimodale
 
 **Q-STAR** est un framework open source de nouvelle génération, conçu pour créer des systèmes d’intelligence artificielle fiables, réutilisables, adaptatifs et compatibles avec des infrastructures variées (du Raspberry Pi aux clusters cloud).
 
-> 🧠 Inspiré de la physique quantique, Q-STAR permet la superposition temporelle de traitements parallèles, favorisant précision et robustesse. Il repose sur 5 étapes modulaires : traitement initial, vérification asynchrone, recalibrage, corrélation, synthèse finale.
+> 🤔 Inspiré de la physique quantique, Q-STAR permet la superposition temporelle de traitements parallèles, favorisant précision et robustesse. Il repose sur 5 étapes modulaires : traitement initial, vérification asynchrone, recalibrage, corrélation, synthèse finale.
 
 ---
 
 ## 📂 Arborescence principale (framework-qstar)
 
-```
+```bash
 framework-qstar/
 ├── qstar/
-│   ├── core.py                # Pipeline principal
+│   ├── qstar_core.py          # Pipeline principal
 │   ├── async_core.py          # Version asynchrone
 │   ├── config/                # Configuration YAML dynamique
 │   ├── logging/               # Logger intelligent
@@ -42,7 +42,6 @@ framework-qstar/
 ├── tools/                    # Export CSV/JSON, benchmarks
 ├── deployment/               # docker-compose
 ├── profile/                  # Profils matériels typiques
-├── config/                   # Config globale YAML
 ├── tests/                    # test_pipeline_evaluator.py
 ├── docs/                     # Documentation scientifique
 ├── run_all.sh                # Lancement global
@@ -69,7 +68,14 @@ make install
 ```bash
 python -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt
+pip install --upgrade pip
+pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu
+```
+
+> ❓ Si vous utilisez **JAX** et **TensorFlow**, assurez-vous que `ml_dtypes==0.2.0` est explicitement installé avant `tensorflow==2.15.0`
+
+```bash
+pip install ml_dtypes==0.2.0 tensorflow==2.15.0
 ```
 
 ---
@@ -96,15 +102,25 @@ make run MODULE=rlhf
 python examples/example_multimodal.py
 ```
 
+### Ligne de commande directe (exemple)
+```bash
+qstar --mode core --input "Bonjour le monde"
+```
+
 ---
 
-## 🧪 Tests & couverture
+## 🧆 Tests & couverture
 
 ### Lancer les tests :
 ```bash
 make test
 # ou manuellement
-pytest tests/test_pipeline_evaluator.py
+pytest tests/
+```
+
+### Couverture de code :
+```bash
+pytest --cov=qstar tests/
 ```
 
 ---
@@ -115,7 +131,7 @@ pytest tests/test_pipeline_evaluator.py
 - 🎯 Vérification + recalibrage des sorties LLM
 - 🧬 **Multimodalité** : texte, image, audio
 - 📈 Benchmarks, visualisation, export
-- 🔌 Backend modulaire : Torch, ONNX, TF, JAX
+- 🔀 Backend modulaire : Torch, ONNX, TF, JAX
 - 📦 Support complet Docker + YAML + Makefile
 - 🔒 Sécurité, sandboxing, auditabilité
 - 🧠 Compatible avec CPU, GPU, edge, cloud
@@ -177,12 +193,12 @@ Q-STAR vise à devenir un **standard d’or** pour le développement d’IA fiab
 
 > 📈 Une structure évolutive, testable, documentée et prête à l’adoption massive.
 
-📫 Rejoins le mouvement sur [GitHub](https://github.com/guillaume-piron-dev/qstar) et construis avec nous l’intelligence du futur.
+📨 Rejoins le mouvement sur [GitHub](https://github.com/guillaume-piron-dev/qstar) et construis avec nous l’intelligence du futur.
 
-## 🧩 Liens utiles
+## 🪟 Liens utiles
 
 - 🌍 Démo Hugging Face : [Q-STAR sur HF Spaces](https://huggingface.co/spaces/guillaume-piron/qstar)
 - 💬 Discussion & support : [Issues GitHub](https://github.com/guillaume-piron-dev/qstar/issues)
-- 📢 LinkedIn Post : [Découvrez Q-STAR](https://www.linkedin.com/...)
+- 📣 LinkedIn Post : [Découvrez Q-STAR](https://www.linkedin.com/...)
 
 > ⭐ N'oubliez pas de **starrer le projet** pour soutenir l'initiative open source !
