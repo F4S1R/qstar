@@ -1,5 +1,6 @@
 ![Build](https://img.shields.io/github/actions/workflow/status/guillaume-piron-dev/qstar/test_full.yml?label=CI%20Build&style=flat-square)
 ![CI Full Build](https://github.com/guillaume-piron-dev/qstar/actions/workflows/test_full.yml/badge.svg)
+![CI Status](https://github.com/F4S1R/qstar/actions/workflows/test.yml/badge.svg)
 ![Build Status](https://github.com/guillaume-piron-dev/qstar/actions/workflows/test_full.yml/badge.svg)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)

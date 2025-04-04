@@ -25,13 +25,18 @@ jobs:
         pip install -r requirements.txt
         pip install black flake8 pytest coverage bandit
 
+    - name: 🧪 Installation locale du framework Q-STAR
+      run: |
+        pip install -e .
+
     - name: ✅ Tests unitaires avec Pytest
       run: |
+        export PYTHONPATH=$PYTHONPATH:$(pwd)
         pytest tests/
-
 
     - name: 🧪 Couverture des tests
       run: |
+        export PYTHONPATH=$PYTHONPATH:$(pwd)
         coverage run -m pytest
         coverage report -m
 
@@ -56,7 +61,3 @@ jobs:
       with:
         name: couverture-tests
         path: .coverage
-    
-    - name: 🧪 Installation locale du framework Q-STAR
-      run: |
-        pip install -e .
