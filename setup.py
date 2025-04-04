@@ -75,7 +75,7 @@ setup(
 
         # Optionnel - JAX / TF
         "jax",
-        "ml_dtypes>=0.4.0",
+        "ml_dtypes>=0.2.0",
         "tensorflow==2.15.0",
         "tensorboard==2.15.2",
         "keras==2.15.0"
