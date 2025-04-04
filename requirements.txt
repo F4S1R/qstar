@@ -1,5 +1,3 @@
-# requirements.txt
-
 # Base
 numpy>=1.20
 transformers>=4.37.2
@@ -40,6 +38,7 @@ rich
 
 # Optionnel - JAX / TF
 jax
-tensorflow
+ml_dtypes>=0.4.0
 tensorflow==2.15.0
-
+tensorboard==2.15.2
+keras==2.15.0
