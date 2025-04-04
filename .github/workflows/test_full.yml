@@ -21,9 +21,11 @@ jobs:
 
     - name: 📦 Installation des dépendances (TensorFlow compatible)
       run: |
-      python -m pip install --upgrade pip
-      pip install ml_dtypes==0.2.0
-      pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu
+        python -m pip install --upgrade pip
+        pip install ml_dtypes==0.2.0
+        pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu
+  
+  
       
 
     - name: 🧪 Installation locale du framework Q-STAR
@@ -62,3 +64,4 @@ jobs:
       with:
         name: couverture-tests
         path: .coverage
+
