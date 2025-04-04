@@ -24,9 +24,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install ml_dtypes==0.2.0
         pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu
-  
-  
-      
 
     - name: 🧪 Installation locale du framework Q-STAR
       run: |
@@ -64,4 +61,3 @@ jobs:
       with:
         name: couverture-tests
         path: .coverage
-
