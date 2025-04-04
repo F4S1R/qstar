@@ -90,8 +90,8 @@ setup(
         "Source": "https://github.com/guillaume-piron-dev/qstar",
         "Bug Tracker": "https://github.com/guillaume-piron-dev/qstar/issues"
     },
-    scripts=[
-        "scripts/install_qstar.bat",
-        "scripts/install_qstar.sh"
-    ]
+    # scripts=[
+    #     "scripts/install_qstar.bat",
+    #     "scripts/install_qstar.sh"
+    # ]
 )
