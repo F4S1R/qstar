@@ -41,6 +41,9 @@ jobs:
         coverage report -m --skip-covered
         coverage html
 
+    - name: 🔐 Définir variables d'environnement
+      run: echo "QSTAR_API_TOKEN=dummy-test-token" >> $GITHUB_ENV
+
     - name: 🔍 Analyse de code avec Flake8
       run: |
         flake8 qstar --count --select=E9,F63,F7,F82 --show-source --statistics
