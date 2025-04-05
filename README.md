@@ -12,6 +12,8 @@
 ![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)
 ![Lint: Flake8](https://img.shields.io/badge/lint-flake8-yellow)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/qstar?label=PyPI%20Downloads&color=blue)
+![No Candy, Only Code](https://img.shields.io/badge/friandise-non--requise-blueviolet?style=for-the-badge&logo=python)
+
 
 # Q-STAR 🚀 – Framework IA Séquentielle Asynchrone Multimodale
 
@@ -200,3 +202,5 @@ Q-STAR vise à devenir un **standard d’or** pour le développement d’IA fiab
 - 📣 LinkedIn Post : [Découvrez Q-STAR](https://www.linkedin.com/...)
 
 > ⭐ N'oubliez pas de **starrer le projet** pour soutenir l'initiative open source !
+  ✨ Version stable déployée avec pipelines CI complets, installation CPU-friendly et compatibilité TF/JAX assurée.
+

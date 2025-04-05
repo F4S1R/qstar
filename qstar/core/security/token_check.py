@@ -2,7 +2,8 @@
 from fastapi import Request, HTTPException
 import os
 
-API_TOKEN = "qstar-secure-token"  # nosec
+API_TOKEN = os.environ.get("QSTAR_API_TOKEN", "")
+
 
 
 

@@ -39,9 +39,8 @@ jobs:
     - name: 🧪 Couverture des tests
       run: |
         export PYTHONPATH=$PYTHONPATH:$(pwd)
-        coverage run -m pytest
-        coverage report -m
-
+        coverage run --rcfile=.coveragerc -m pytest
+        coverage report -m --skip-covered
 
     - name: 🔐 Définir variables d'environnement
       run: echo "QSTAR_API_TOKEN=dummy-test-token" >> $GITHUB_ENV
