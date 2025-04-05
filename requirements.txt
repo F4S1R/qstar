@@ -36,7 +36,7 @@ datasets
 pyyaml
 rich
 
-# Optionnel - JAX / TF
+# Optionnel - JAX / TF (⚠️ versions compatibles entre elles)
 jax
 ml_dtypes==0.2.0
 tensorflow==2.15.0

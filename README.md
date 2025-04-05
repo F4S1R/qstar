@@ -69,14 +69,11 @@ make install
 python -m venv venv
 source venv/bin/activate
 pip install --upgrade pip
+pip install ml_dtypes==0.2.0
 pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu
 ```
 
-> ❓ Si vous utilisez **JAX** et **TensorFlow**, assurez-vous que `ml_dtypes==0.2.0` est explicitement installé avant `tensorflow==2.15.0`
-
-```bash
-pip install ml_dtypes==0.2.0 tensorflow==2.15.0
-```
+> ❓ Si vous utilisez **JAX** et **TensorFlow**, assurez-vous que `ml_dtypes==0.2.0` est explicitement installé **avant** `tensorflow==2.15.0`
 
 ---
 
@@ -95,6 +92,7 @@ make run MODULE=gradio
 ### RLHF / Entraînement via TRL
 ```bash
 make run MODULE=rlhf
+make test_rlhf
 ```
 
 ### Inférence multimodale (texte, image, audio)
@@ -109,7 +107,7 @@ qstar --mode core --input "Bonjour le monde"
 
 ---
 
-## 🧆 Tests & couverture
+## 🫖 Tests & couverture
 
 ### Lancer les tests :
 ```bash
@@ -128,7 +126,7 @@ pytest --cov=qstar tests/
 ## 🧬 Fonctionnalités majeures
 
 - ✅ Traitement **séquentiel et asynchrone**
-- 🎯 Vérification + recalibrage des sorties LLM
+- 🌟 Vérification + recalibrage des sorties LLM
 - 🧬 **Multimodalité** : texte, image, audio
 - 📈 Benchmarks, visualisation, export
 - 🔀 Backend modulaire : Torch, ONNX, TF, JAX
@@ -138,7 +136,7 @@ pytest --cov=qstar tests/
 
 ---
 
-## 📚 Documentation
+## 📙 Documentation
 
 | Lien                         | Description                              |
 |------------------------------|------------------------------------------|
@@ -195,7 +193,7 @@ Q-STAR vise à devenir un **standard d’or** pour le développement d’IA fiab
 
 📨 Rejoins le mouvement sur [GitHub](https://github.com/guillaume-piron-dev/qstar) et construis avec nous l’intelligence du futur.
 
-## 🪟 Liens utiles
+## 🦠 Liens utiles
 
 - 🌍 Démo Hugging Face : [Q-STAR sur HF Spaces](https://huggingface.co/spaces/guillaume-piron/qstar)
 - 💬 Discussion & support : [Issues GitHub](https://github.com/guillaume-piron-dev/qstar/issues)
