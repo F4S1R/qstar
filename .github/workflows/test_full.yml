@@ -26,8 +26,11 @@ jobs:
         pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu
 
     - name: 🧪 Installation locale du framework Q-STAR
+       env:
+        QSTAR_API_TOKEN: test-token
       run: |
         pip install -e .
+  
 
     - name: ✅ Tests unitaires avec Pytest
       run: |

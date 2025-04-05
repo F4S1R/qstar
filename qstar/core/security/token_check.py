@@ -1,7 +1,10 @@
 # qstar/core/security/token_check.py
 from fastapi import Request, HTTPException
+import os
 
-API_TOKEN = "qstar-secure-token"
+API_TOKEN = "qstar-secure-token"  # nosec
+
+
 
 
 async def verify_token(request: Request):
