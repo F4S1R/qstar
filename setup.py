@@ -1,8 +1,9 @@
+# setup.py
 from setuptools import setup, find_packages
 from pathlib import Path
 import re
 
-# Lecture dynamique de la version depuis qstar/__init__.py
+# 🔄 Lecture dynamique de la version
 def get_version():
     init_path = Path("qstar/__init__.py")
     content = init_path.read_text(encoding="utf-8")
@@ -11,6 +12,7 @@ def get_version():
         raise RuntimeError("Impossible de trouver la version dans qstar/__init__.py")
     return match.group(1)
 
+# 📖 Description longue depuis README.md
 this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text(encoding="utf-8")
 
@@ -73,9 +75,9 @@ setup(
         "pyyaml",
         "rich",
 
-        # Optionnel - JAX / TF
+        # Optionnel - JAX / TF (⚠️ ordre important pour éviter conflits)
         "jax",
-        "ml_dtypes==0.2.0",  # pour compat strict avec tensorflow==2.15.0
+        "ml_dtypes==0.2.0",
         "tensorflow==2.15.0",
         "tensorboard==2.15.2",
         "keras==2.15.0"

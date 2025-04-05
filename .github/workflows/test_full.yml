@@ -1,5 +1,7 @@
 name: Q-STAR CI Full
 
+# -*- coding: utf-8 -*-
+
 on:
   push:
     branches: [ main ]
@@ -45,6 +47,11 @@ jobs:
       run: |
         flake8 qstar --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 qstar --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        
+    - name: 🔍 Analyse complète de code avec Flake8 (debug temporaire)
+      run: |
+        flake8 qstar --max-line-length=127 --show-source --statistics --exit-zero
+      
 
     - name: 🎨 Vérification de style avec Black
       run: |
@@ -67,3 +74,10 @@ jobs:
       with:
         name: couverture-tests
         path: .coverage
+    
+    - name: 📁 Upload HTML coverage report
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-html
+        path: htmlcov
+      
