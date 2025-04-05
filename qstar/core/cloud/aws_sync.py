@@ -2,13 +2,16 @@
 import boto3
 import os
 
+
 class S3Sync:
-    def __init__(self, bucket_name, aws_access_key, aws_secret_key, region_name="eu-west-1"):
+    def __init__(
+        self, bucket_name, aws_access_key, aws_secret_key, region_name="eu-west-1"
+    ):
         self.s3 = boto3.client(
-            's3',
+            "s3",
             aws_access_key_id=aws_access_key,
             aws_secret_access_key=aws_secret_key,
-            region_name=region_name
+            region_name=region_name,
         )
         self.bucket_name = bucket_name
 
@@ -22,6 +25,7 @@ class S3Sync:
     def download_file(self, s3_path, local_path):
         self.s3.download_file(self.bucket_name, s3_path, local_path)
         print(f"📥 Fichier '{s3_path}' récupéré dans '{local_path}'")
+
 
 if __name__ == "__main__":
     # Exemple d'utilisation

@@ -1,5 +1,6 @@
 import difflib
 
+
 def corriger_par_correlation(input_text, recalibrated_text):
     # 🔒 Patch ici pour éviter erreur si int est passé
     input_text = str(input_text)

@@ -2,12 +2,13 @@
 import importlib
 import logging
 
+
 class BackendSelector:
     def __init__(self):
         self.backends = {
             "torch": self._check_available("torch"),
             "tensorflow": self._check_available("tensorflow"),
-            "jax": self._check_available("jax")
+            "jax": self._check_available("jax"),
         }
 
     def _check_available(self, module_name):
@@ -25,8 +26,11 @@ class BackendSelector:
         elif self.backends["jax"]:
             return "jax"
         else:
-            logging.warning("Aucun backend IA disponible. Veuillez installer torch, tensorflow ou jax.")
+            logging.warning(
+                "Aucun backend IA disponible. Veuillez installer torch, tensorflow ou jax."
+            )
             return None
+
 
 if __name__ == "__main__":
     selector = BackendSelector()

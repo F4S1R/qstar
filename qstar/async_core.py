@@ -6,6 +6,7 @@ from qstar.modules.recalibrator import recalibrer_resultat
 from qstar.modules.correlate import corriger_par_correlation
 from qstar.modules.synthesize import produire_resultat_final
 
+
 class AsyncQStarPipeline:
     def __init__(self):
         self.logs = []

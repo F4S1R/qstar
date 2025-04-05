@@ -1,8 +1,7 @@
 # qstar/models/jax_module.py
-import jax
 import jax.numpy as jnp
-from flax import linen as nn
 from transformers import FlaxAutoModelForSequenceClassification, AutoTokenizer
+
 
 class QStarJAX:
     def __init__(self, model_name="distilbert-base-uncased"):

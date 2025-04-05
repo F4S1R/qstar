@@ -2,6 +2,7 @@
 import json
 import time
 
+
 class EvalMonitor:
     def __init__(self, log_file="eval_log.json"):
         self.log_file = log_file
@@ -13,7 +14,7 @@ class EvalMonitor:
             "model": model_name,
             "input": input_text,
             "output": output_text,
-            "score": score
+            "score": score,
         }
         self.records.append(record)
         self._save()
@@ -29,6 +30,7 @@ class EvalMonitor:
         except FileNotFoundError:
             self.records = []
         return self.records
+
 
 if __name__ == "__main__":
     monitor = EvalMonitor()

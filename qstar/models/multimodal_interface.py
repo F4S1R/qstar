@@ -1,5 +1,10 @@
 # qstar/models/multimodal_interface.py
-from transformers import BlipProcessor, BlipForConditionalGeneration, Wav2Vec2ForCTC, Wav2Vec2Processor
+from transformers import (
+    BlipProcessor,
+    BlipForConditionalGeneration,
+    Wav2Vec2ForCTC,
+    Wav2Vec2Processor,
+)
 from qstar.models.text.generate import QStarTextGenerator
 from PIL import Image
 import torch
@@ -12,14 +17,21 @@ from tqdm import tqdm
 def verify_caption(caption):
     return "photo" in caption.lower() or "image" in caption.lower()
 
+
 def recalibrate_caption(caption):
     return caption if verify_caption(caption) else caption + ". Vérifie la scène."
+
 
 def verify_transcript(transcript):
     return len(transcript.split()) > 3
 
+
 def recalibrate_transcript(transcript):
-    return transcript if verify_transcript(transcript) else transcript + ". Analyse complémentaire demandée."
+    return (
+        transcript
+        if verify_transcript(transcript)
+        else transcript + ". Analyse complémentaire demandée."
+    )
 
 
 class QStarVision:
@@ -50,7 +62,12 @@ class QStarAudio:
 
     def transcribe(self, audio_path):
         waveform, sample_rate = torchaudio.load(audio_path)
-        inputs = self.processor(waveform.squeeze(), sampling_rate=sample_rate, return_tensors="pt", padding=True)
+        inputs = self.processor(
+            waveform.squeeze(),
+            sampling_rate=sample_rate,
+            return_tensors="pt",
+            padding=True,
+        )
         with torch.no_grad():
             logits = self.model(**inputs).logits
         predicted_ids = torch.argmax(logits, dim=-1)
@@ -110,6 +127,6 @@ if __name__ == "__main__":
     output = mm.analyze(
         prompt="Décris une machine intelligente.",
         image_path="sample.jpg",
-        audio_path="sample.wav"
+        audio_path="sample.wav",
     )
     print("\n🧠 Résultat multimodal :", output)

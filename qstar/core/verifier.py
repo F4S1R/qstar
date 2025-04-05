@@ -1,5 +1,6 @@
 # qstar/core/verifier.py
 
+
 class QStarVerifier:
     def __init__(self):
         # Initialisation simple ou avec des paramètres de vérification

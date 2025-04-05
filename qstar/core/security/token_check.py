@@ -3,11 +3,13 @@ from fastapi import Request, HTTPException
 
 API_TOKEN = "qstar-secure-token"
 
+
 async def verify_token(request: Request):
     token = request.headers.get("Authorization")
     if token != f"Bearer {API_TOKEN}":
         raise HTTPException(status_code=403, detail="Token invalide ou manquant")
     return True
+
 
 # Exemple d'utilisation avec FastAPI
 if __name__ == "__main__":

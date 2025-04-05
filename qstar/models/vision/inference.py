@@ -3,6 +3,7 @@ from transformers import AutoImageProcessor, AutoModelForImageClassification
 from PIL import Image
 import torch
 
+
 class QStarImageClassifier:
     def __init__(self, model_name="google/vit-base-patch16-224"):
         self.processor = AutoImageProcessor.from_pretrained(model_name)
@@ -16,6 +17,7 @@ class QStarImageClassifier:
         logits = outputs.logits
         predicted_class_idx = logits.argmax(-1).item()
         return self.model.config.id2label[predicted_class_idx]
+
 
 if __name__ == "__main__":
     clf = QStarImageClassifier()

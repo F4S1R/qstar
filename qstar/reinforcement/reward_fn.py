@@ -5,6 +5,7 @@ from qstar.core.verifier import QStarVerifier
 # Initialisation du vérificateur de cohérence
 verifier = QStarVerifier()
 
+
 def score_response(prompt: str, response: str) -> float:
     """
     Évalue la cohérence du couple prompt-réponse à l'aide du vérificateur Q-STAR.
@@ -18,6 +19,7 @@ def score_response(prompt: str, response: str) -> float:
     """
     return verifier.score(prompt, response)
 
+
 def detect_hallucination(response: str) -> bool:
     """
     Détecte la présence d'hallucinations potentielles dans une réponse.
@@ -29,6 +31,7 @@ def detect_hallucination(response: str) -> bool:
         bool: True si une hallucination est détectée, False sinon.
     """
     return verifier.detect_hallucination(response)
+
 
 def composite_reward(prompt: str, response: str) -> float:
     """

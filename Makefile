@@ -47,6 +47,14 @@ clean:
 test:
 	pytest $(TEST_DIR)
 
+test-full:
+	@echo "🧪 Lancement complet des tests + couverture"
+	coverage run -m pytest
+	coverage report -m
+	flake8 qstar
+	black --check qstar
+	bandit -r qstar
+
 # 🎨 Formatage
 format:
 	black $(SRC) $(SCRIPT_DIR) $(TEST_DIR)

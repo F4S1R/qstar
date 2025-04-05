@@ -1,8 +1,8 @@
 # qstar/logging/logger.py
-import os
 import json
 import datetime
 from pathlib import Path
+
 
 class QStarLogger:
     def __init__(self, session_name="default_session", save_path="logs"):
@@ -16,7 +16,7 @@ class QStarLogger:
         entry = {
             "step": step_name,
             "timestamp": datetime.datetime.now().isoformat(),
-            "content": content
+            "content": content,
         }
         self.logs.append(entry)
 

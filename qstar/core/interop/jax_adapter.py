@@ -2,6 +2,7 @@
 import jax
 import jax.numpy as jnp
 
+
 class JAXAdapter:
     def __init__(self):
         pass
@@ -12,6 +13,7 @@ class JAXAdapter:
 
     def batched_compute(self, x):
         return jax.vmap(self.compute)(x)
+
 
 if __name__ == "__main__":
     adapter = JAXAdapter()

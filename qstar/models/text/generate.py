@@ -1,8 +1,8 @@
 # qstar/models/text/generate.py
 from transformers import AutoTokenizer, AutoModelForCausalLM
-import torch
 from tqdm import tqdm
 import time
+
 
 class QStarTextGenerator:
     def __init__(self, model_name="gpt2"):
@@ -20,7 +20,7 @@ class QStarTextGenerator:
             max_new_tokens=max_tokens,
             do_sample=True,
             top_k=50,
-            temperature=0.7
+            temperature=0.7,
         )
 
         for _ in tqdm(range(5), desc="Décodage", unit="étape"):
@@ -28,6 +28,7 @@ class QStarTextGenerator:
 
         print("✅ Génération terminée")
         return self.tokenizer.decode(outputs[0], skip_special_tokens=True)
+
 
 if __name__ == "__main__":
     gen = QStarTextGenerator()

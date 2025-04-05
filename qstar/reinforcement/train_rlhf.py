@@ -3,16 +3,18 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 from trl import PPOTrainer, PPOConfig
 from datasets import load_dataset
 from qstar.reinforcement.reward_fn import composite_reward
-import torch
+
 
 def prepare_model(model_name="gpt2"):
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForCausalLM.from_pretrained(model_name)
     return tokenizer, model
 
+
 def prepare_dataset(name="imdb", split="train[:1%]"):
     dataset = load_dataset(name, split=split)
     return dataset["text"]
+
 
 def train_rlhf():
     config = PPOConfig(
@@ -45,6 +47,7 @@ def train_rlhf():
     model.save_pretrained("outputs/ppo_rlhf_qstar")
     tokenizer.save_pretrained("outputs/ppo_rlhf_qstar")
     print("✅ Modèle RLHF entraîné et sauvegardé.")
+
 
 if __name__ == "__main__":
     train_rlhf()

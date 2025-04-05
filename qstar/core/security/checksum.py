@@ -2,6 +2,7 @@
 import hashlib
 import os
 
+
 def compute_checksum(file_path):
     if not os.path.exists(file_path):
         raise FileNotFoundError("Fichier introuvable")
@@ -12,9 +13,11 @@ def compute_checksum(file_path):
             sha256_hash.update(byte_block)
     return sha256_hash.hexdigest()
 
+
 def verify_checksum(file_path, expected_hash):
     actual_hash = compute_checksum(file_path)
     return actual_hash == expected_hash
+
 
 if __name__ == "__main__":
     test_file = "./trained_model.bin"
