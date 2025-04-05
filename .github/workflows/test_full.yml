@@ -34,11 +34,12 @@ jobs:
         export PYTHONPATH=$PYTHONPATH:$(pwd)
         pytest tests/
 
-    - name: 📊 Couverture des tests
+    - name: 🧪 Couverture des tests
       run: |
         export PYTHONPATH=$PYTHONPATH:$(pwd)
-        coverage run -m pytest
-        coverage report -m
+        coverage run --omit="/tmp/*" -m pytest
+        coverage report -m --skip-covered
+  
 
     - name: 🔍 Analyse de code avec Flake8
       run: |
