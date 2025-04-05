@@ -5,9 +5,6 @@ import os
 API_TOKEN = os.environ.get("QSTAR_API_TOKEN", "")
 
 
-
-
-
 async def verify_token(request: Request):
     token = request.headers.get("Authorization")
     if token != f"Bearer {API_TOKEN}":
